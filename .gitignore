@@ -1,3 +1,5 @@
+.project
+
 src/bitcoin
 src/bitcoind
 src/bitcoin-cli

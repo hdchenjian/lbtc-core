@@ -766,7 +766,7 @@ void DPoS::Init()
         nBlockIntervalTime = 3;
         nDposStartHeight = 7000;
     } else {
-        cSuperForgerAddress = CBitcoinAddress("my5ioJEbbhMjRzgyQpcnq6fmbfUMQgTqMZ");
+        cSuperForgerAddress = CBitcoinAddress("mftBcEPBkrKZ8Gys5yyDfq8jXCydjf5MtZ");
         gDPoS.nDposStartTime = 0;
 
         nMaxDelegateNumber = 10;

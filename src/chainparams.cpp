@@ -52,7 +52,7 @@ static CBlock CreateGenesisBlock(const char* pszTimestamp, const CScript& genesi
 static CBlock CreateGenesisBlock(uint32_t nTime, uint32_t nNonce, uint32_t nBits, int32_t nVersion, const CAmount& genesisReward)
 {
     const char* pszTimestamp = "The Times 03/Jan/2009 Chancellor on brink of second bailout for banks";
-    const CScript genesisOutputScript = CScript() << ParseHex("036cfd9ba81490b47423fc2cc94e0087e7585f45dfcbb81d3d2b11dff69af89b73") << OP_CHECKSIG;
+    const CScript genesisOutputScript = CScript() << ParseHex("03873f59bd3550ad4556651e0c1e08d6d10efde5fa120c24aa9fd4cd05097fe694") << OP_CHECKSIG;
     return CreateGenesisBlock(pszTimestamp, genesisOutputScript, nTime, nNonce, nBits, nVersion, genesisReward);
 }
 
@@ -121,8 +121,8 @@ public:
 
         genesis = CreateGenesisBlock(1231006505, 2083236893, 0x1d00ffff, 1, 0.0625 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
-        assert(consensus.hashGenesisBlock == uint256S("0x08a54bbf1a76ac6437d3d63159ced8072a484ba0c8539db5900c5df5a863ef4d"));
-        assert(genesis.hashMerkleRoot == uint256S("0x40f97e1c17190cd24dad5a8fb7cfcf8b587c49e3e384af75bc6c6e7316afce4f"));
+        assert(consensus.hashGenesisBlock == uint256S("0513b7f3fe6fa538a4b33d3723c813085d9e8eab7f2d8829d41ec5cb2fd87513"));
+        assert(genesis.hashMerkleRoot == uint256S("4839d73b248218ae77ff21cd1987936947079aa050db2df74e7d46ba7a84bdb6"));
 
         // Note that of those with the service bits flag, most only support a subset of possible options
         vSeeds.push_back(CDNSSeedData("seed1.lbtc.io", "seed1.lbtc.io")); // Pieter Wuille, only supports x1, x5, x9, and xd
@@ -193,7 +193,7 @@ public:
         consensus.powLimit = uint256S("00000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
         consensus.nPowTargetTimespan = 14 * 24 * 60 * 60; // two weeks
         consensus.nPowTargetSpacing = 10 * 60;
-        consensus.fPowAllowMinDifficultyBlocks = true;
+        consensus.fPowAllowMinDifficultyBlocks = false;
         consensus.fPowNoRetargeting = false;
         consensus.nRuleChangeActivationThreshold = 1512; // 75% for testchains
         consensus.nMinerConfirmationWindow = 2016; // nPowTargetTimespan / nPowTargetSpacing
@@ -218,6 +218,7 @@ public:
         consensus.defaultAssumeValid = uint256S("0x00000000000128796ee387cf110ccb9d2f36cffaf7f73079c995377c65ac0dcc"); //1079274
 
         pchMessageStart[0] = 0x0b;
+        pchMessageStart[0] = 0x1b;
         pchMessageStart[1] = 0x11;
         pchMessageStart[2] = 0x09;
         pchMessageStart[3] = 0x07;
@@ -228,8 +229,9 @@ public:
 
         genesis = CreateGenesisBlock(1296688602, 414098458, 0x1d00ffff, 1, 0.0625 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
-        assert(consensus.hashGenesisBlock == uint256S("0xff18baca4139b89a99a2a1a2a1032b84e217d0853e28cf0c6c5e761941e22247"));
-        assert(genesis.hashMerkleRoot == uint256S("0x40f97e1c17190cd24dad5a8fb7cfcf8b587c49e3e384af75bc6c6e7316afce4f"));
+        //std::cout << consensus.hashGenesisBlock.GetHex() << std::endl;
+        assert(consensus.hashGenesisBlock == uint256S("dd50ee25b8c74b1a4851cd3258544972b0e2fff26a63416988a231345c8b58e6"));
+        assert(genesis.hashMerkleRoot == uint256S("4839d73b248218ae77ff21cd1987936947079aa050db2df74e7d46ba7a84bdb6"));
 
         vFixedSeeds.clear();
         vSeeds.clear();
